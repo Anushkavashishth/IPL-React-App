@@ -25,7 +25,6 @@ export const SingleStepRouter = ({next, setSelectedPlayer}) => {
             ? form.setFieldValue(payload.current.data)
             : form.resetFields()
     }
-
     return (
         <>
             {open &&
