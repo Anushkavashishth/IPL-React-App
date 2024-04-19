@@ -8,7 +8,6 @@ import { items } from './Navigation';
 
 const { Header } = Layout;
 
-
 const subMenu = (
     <Menu style={{ backgroundColor: "#19398a" }}>
         <Menu.Item key="upcoming" style={{ color: "white" }}>Upcoming Matches</Menu.Item>
