@@ -1,0 +1,153 @@
+[
+    {
+        "team_id": 1,
+        "team_name": "Chennai Super Kings",
+        "team_logo": "assets/teams/logo/super-kings.svg",
+        "owner_name": "Chennai Super Kings Cricket Ltd",
+        "coach_name": "Stephen Fleming",
+        "captain_name": "Ruturaj Gaikwad",
+        "players": [
+            {
+                "playerId": 6,
+                "playerName": "MS Dhoni",
+                "specialization": "Batsman",
+                "photo": "assets/players/playersPhoto/Dhoni.png"
+            },
+            {
+                "playerId": 3,
+                "playerName": "Jasprit Bumrah",
+                "specialization": "Bowler",
+                "photo": "assets/players/playersPhoto/Jasprit.png"
+            },
+            {
+                "playerId": 13,
+                "playerName": "Ruturaj Gaikwad",
+                "specialization": "Batsman",
+                "photo": "assets/players/playersPhoto/Ruturaj.png"
+            }
+        ]
+    },
+    {
+        "team_id": 2,
+        "team_name": "Delhi Capitals",
+        "team_logo": "assets/teams/logo/delhi-capitals.svg",
+        "owner_name": "GMR Group",
+        "coach_name": "Ricky Ponting",
+        "captain_name": "Rishabh Pant",
+        "players": [
+            
+            {
+                "playerId": 5,
+                "playerName": "Kagiso Rabada",
+                "specialization": "Bowler",
+                "photo": "assets/players/playersPhoto/Kagiso.png"
+            },
+            {
+                "playerId": 12,
+                "playerName": "Pravin Dubey",
+                "specialization": "Bowler",
+                "photo": "assets/players/playersPhoto/Pravin.png"
+            },
+            {
+                "playerId": 10,
+                "playerName": "Rishabh Pant",
+                "specialization": "Batsman",
+                "photo": "assets/players/playersPhoto/Rishabh.png"
+            },
+            {
+                "playerId": 11,
+                "playerName": "Axar Patel",
+                "dob": "20-01-1994",
+                "specialization": "all-rounder",
+                "photo": "assets/players/playersPhoto/Axar.png"
+            }
+        ]
+    },
+    {
+        "team_id": 3,
+        "team_name": "Kolkata Knight Riders",
+        "team_logo": "assets/teams/logo/knight-riders.svg",
+        "owner_name": "Red Chillies Entertainment",
+        "coach_name": "Brendon McCullum",
+        "captain_name": "Shreyas Iyer",
+        "players": [
+            {
+                "playerId": 4,
+                "playerName": "Shreyas Iyer",
+                "specialization": "Batsman",
+                "photo": "assets/players/playersPhoto/Shreyas.png"
+            },
+            {
+                "playerId": 8,
+                "playerName": "Mukesh Choudhary",
+                "specialization": "Bowler",
+                "photo": "assets/players/playersPhoto/Mukesh.png"
+            }
+        ]
+    },
+    {
+        "team_id": 4,
+        "team_name": "Mumbai Indians",
+        "team_logo": "assets/teams/logo/mumbai-indians.svg",
+        "owner_name": "Reliance Industries",
+        "coach_name": "Mahela Jayawardene",
+        "captain_name": "Rohit Sharma",
+        "players": [
+            
+            {
+                "playerId": 7,
+                "playerName": "Suryakumar Yadav",
+                "dob": "14-09-1990",
+                "specialization": "Batsman",
+                "photo": "assets/players/playersPhoto/Surya.png"
+            },
+            {
+                "playerId": 2,
+                "playerName": "Rohit Sharma",
+                "specialization": "Batsman"
+            }
+        ]
+    },
+    {
+        "team_id": 5,
+        "team_name": "Rajasthan Royals",
+        "team_logo": "assets/teams/logo/rajasthan-royals.svg",
+        "owner_name": "The Royals Sports Group",
+        "coach_name": "Kumar Sangakkara",
+        "captain_name": "Sanju Samson",
+        "players": [
+            {
+                "playerId": 9,
+                "playerName": "Ravindra Jadeja",
+                "dob": "06-12-1988",
+                "specialization": "all-rounder",
+                "photo": "assets/players/playersPhoto/Ravindra.png"
+            },
+            {
+                "playerId": 8,
+                "playerName": "Mukesh Choudhary",
+                "dob": "06-07-1996",
+                "specialization": "Bowler",
+                "photo": "assets/players/playersPhoto/Mukesh.png"
+            }
+        ]
+    },
+    {
+        "team_id": 6,
+        "team_name": "Royal Challengers Bengaluru",
+        "team_logo": "assets/teams/logo/royal-challengers.svg",
+        "owner_name": "United Spirits Limited (USL)",
+        "coach_name": "Andy Flower",
+        "captain_name": "Faf du Plessis",
+        "players": [
+            
+            
+            {
+                "playerId": 1,
+                "playerName": "Virat Kohli",
+                "specialization": "Batsman",
+                "photo": "assets/players/playersPhoto/Virat.png"
+            }
+        ]
+    }
+]
