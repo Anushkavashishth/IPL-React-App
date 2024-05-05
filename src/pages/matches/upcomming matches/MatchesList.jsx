@@ -17,7 +17,7 @@ const MatchesList = ({
   const [matchesList, setMatchesList] = useState(null);
   const [filteredMatchesList, setfilteredMatchesList] = useState(null);
 
-  console.log("c", matchesList);
+  // console.log("c", matchesList);
   function formatDates(date) {
     let dates = date
       .filter((d) => d !== "")
@@ -68,11 +68,11 @@ const MatchesList = ({
   }, [matchesUpdatedCount]);
 
   useEffect(() => {
-    console.log("called", matchesList);
+    // console.log("called", matchesList);
     if (searchObj && matchesList) {
-      console.log("searchObj");
+      // console.log("searchObj");
       let filteredMatches = filterMatches(matchesList, searchObj);
-      console.log("filter", filteredMatches);
+      // console.log("filter", filteredMatches);
       setfilteredMatchesList(filteredMatches);
     }
   }, [matchesList, searchObj]);

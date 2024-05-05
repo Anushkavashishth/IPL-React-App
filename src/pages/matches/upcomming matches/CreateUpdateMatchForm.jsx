@@ -13,12 +13,12 @@ const createUpdateMatchForm = ({
     if (payload.current.operation === "ADD") {
       payload.current.data.match_id = Math.random();
       addMatch(payload.current.data).then((matches) => {
-        console.log("ADD Matches", matches);
+        // console.log("ADD Matches", matches);
         setIsFormModalOpen(false);
       });
     } else {
       updateMatch(payload.current.data, "match_id").then((matches) => {
-        console.log("updated Matches", matches);
+        // console.log("updated Matches", matches);
         setIsFormModalOpen(false);
       });
     }

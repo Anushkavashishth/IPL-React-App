@@ -1,17 +1,17 @@
-import { Card, Row, Col } from 'antd';
+import { Card, Row, Col, Typography } from 'antd';
 const { Meta } = Card;
 
 const TeamBatters = ({ batsmen }) => {
-    console.log(batsmen, "B")
+    // console.log(batsmen, "B")
     return (
-        <div>
-            <h2 className='what-r-u-text' style={{margin: 0, textAlign: "left"}}>BATTERS</h2>
+        <>
+            <Typography.Title className='what-r-u-text' style={{ margin: 0, textAlign: "left" }}>BATTERS</Typography.Title>
             <Row gutter={[16, 16]}>
-                
-                {batsmen?.map((batter) => (
-                    <Col >
-                        <Card
 
+                {batsmen?.map((batter) => (
+                    <Col>
+                        <Card
+                            hoverable
                             style={{
                                 width: 240,
                             }}
@@ -23,7 +23,7 @@ const TeamBatters = ({ batsmen }) => {
 
                 ))}
             </Row>
-        </div>
+        </>
     );
 };
 

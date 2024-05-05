@@ -4,7 +4,7 @@ import Search from "./Search";
 import Seasons from "./Seasons";
 import { useState } from "react";
 import { Col, Row, Card, Typography, Divider } from "antd";
-import background from "../../../assets/images/background.svg";
+import background from "../../../image/background.svg";
 
 const { Text } = Typography;
 

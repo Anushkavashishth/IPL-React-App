@@ -4,12 +4,19 @@ import PlayersWrapper from "../../players/PlayersWrapper";
 import TeamsWrapper from "../../teams/TeamsWrapper";
 import HomePage from "../HomePage";
 
+
 export const items = [
-    { key: '1', label: 'Home', path: `/`, component:<HomePage/> },
-    { key: 'upcoming', label: 'Upcoming Matches', path: `/upcoming-matches`, component:<UpcommingMatchesPage/> },
-    { key: 'completed', label: 'Completed Matches', path: `/completed-matches`, component: <CompletedMatchesPage /> },
-    { key: '3', label: 'Teams', path: `/teams`, component: <TeamsWrapper/> },
-    { key: '4', label: 'Players', path: `/players`, component: <PlayersWrapper/> },
-  ];
   
-  
+  { key: '1', label: 'home', path: `/`, component: <HomePage /> },
+  {
+    key: '2', label: 'matches', path: `/`, component: <HomePage />,
+    submenu: [
+      { key: 'upcoming', label: 'upcoming', path: `/upcomingMatches`, component: <CompletedMatchesPage /> },
+      { key: 'completed', label: 'completed', path: `/completedMatches`, component: <UpcommingMatchesPage /> }
+    ]
+  },
+  { key: '3', label: 'teams', path: `/teams`, component: <TeamsWrapper /> },
+  { key: '4', label: 'players', path: `/players`, component: <PlayersWrapper /> },
+];
+
+

@@ -33,9 +33,9 @@ export function updateMatch(matchesList, updatedMatch, pk) {
 
 export default function Main() {
   addMatch({ match_id: 2, match_no: 2 }).then((matchList) => {
-    console.log(matchList);
+    // console.log(matchList);
     removeMatch(matchList, 1, "match_id").then((list) => {
-      console.log("list", list);
+      // console.log("list", list);
     });
   });
 }

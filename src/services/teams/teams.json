@@ -14,16 +14,77 @@
                 "photo": "assets/players/playersPhoto/Dhoni.png"
             },
             {
-                "playerId": 3,
-                "playerName": "Jasprit Bumrah",
-                "specialization": "Bowler",
-                "photo": "assets/players/playersPhoto/Jasprit.png"
-            },
-            {
                 "playerId": 13,
                 "playerName": "Ruturaj Gaikwad",
                 "specialization": "Batsman",
                 "photo": "assets/players/playersPhoto/Ruturaj.png"
+            },
+            {
+                "playerId": 14,
+                "playerName": "Devon Conway",
+                "specialization": "Batsman",
+                "photo": "assets/players/playersPhoto/Devon.png"
+            },
+            {
+                "playerId": 15,
+                "playerName": "Sameer Rizvi",
+                "specialization": "Batsman",
+                "photo": "assets/players/playersPhoto/Sameer.png"
+            },
+            {
+                "playerId": 15,
+                "playerName": "Mitchell Santner",
+                "specialization": "all-rounder",
+                "photo": "assets/players/playersPhoto/Mitchell.png"
+            },
+            {
+                "playerId": 16,
+                "playerName": "Shivam Dube",
+                "dob": "26-06-1993",
+                "specialization": "all-rounder",
+                "photo": "assets/players/playersPhoto/Shivam.png"
+            },
+            {
+                "playerId": 17,
+                "playerName": "Nishant Sindhu",
+                "dob": "09-04-2004",
+                "specialization": "all-rounder",
+                "photo": "assets/players/playersPhoto/Nishant.png"
+            },
+            {
+                "playerId": 18,
+                "playerName": "Richard Gleeson",
+                "dob": "02-12-1987",
+                "specialization": "Bowler",
+                "photo": "assets/players/playersPhoto/Richard.png"
+            },
+            {
+                "playerId": 19,
+                "playerName": "Richard Gleeson",
+                "dob": "02-12-1987",
+                "specialization": "Bowler",
+                "photo": "assets/players/playersPhoto/Richard.png"
+            },
+            {
+                "playerId": 20,
+                "playerName": "Prashant Solanki",
+                "dob": "15-10-1992",
+                "specialization": "Bowler",
+                "photo": "assets/players/playersPhoto/Prashant.png"
+            },
+            {
+                "playerId": 21,
+                "playerName": "Tushar Deshpande",
+                "dob": "15-05-1995",
+                "specialization": "Bowler",
+                "photo": "assets/players/playersPhoto/Tushar.png"
+            },
+            {
+                "playerId": 21,
+                "playerName": "Simarjeet Singh",
+                "dob": "17-01-1998",
+                "specialization": "Bowler",
+                "photo": "assets/players/playersPhoto/Simarjeet.png"
             }
         ]
     },
@@ -35,7 +96,6 @@
         "coach_name": "Ricky Ponting",
         "captain_name": "Rishabh Pant",
         "players": [
-            
             {
                 "playerId": 5,
                 "playerName": "Kagiso Rabada",
@@ -93,7 +153,6 @@
         "coach_name": "Mahela Jayawardene",
         "captain_name": "Rohit Sharma",
         "players": [
-            
             {
                 "playerId": 7,
                 "playerName": "Suryakumar Yadav",
@@ -105,6 +164,12 @@
                 "playerId": 2,
                 "playerName": "Rohit Sharma",
                 "specialization": "Batsman"
+            },
+            {
+                "playerId": 3,
+                "playerName": "Jasprit Bumrah",
+                "specialization": "Bowler",
+                "photo": "assets/players/playersPhoto/Jasprit.png"
             }
         ]
     },
@@ -140,8 +205,6 @@
         "coach_name": "Andy Flower",
         "captain_name": "Faf du Plessis",
         "players": [
-            
-            
             {
                 "playerId": 1,
                 "playerName": "Virat Kohli",

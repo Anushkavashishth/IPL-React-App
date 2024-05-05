@@ -1,13 +1,13 @@
-import { Card, Row, Col } from 'antd';
+import { Card, Row, Col, Typography } from 'antd';
 const { Meta } = Card;
 
 const TeamBowlers = ({ bowlers }) => {
     return (
-        <div>
-            <h2 className='what-r-u-text' style={{margin: 0, textAlign: "left"}}>BOWLERS</h2>
+        <>
+            <Typography.Title className='what-r-u-text' style={{ margin: 0, textAlign: "left" }}>BOWLERS</Typography.Title>
             <Row gutter={[16, 16]}>
                 {bowlers?.map((bowler) => (
-                    <Col>
+                    <Col span={[8, 8]}>
                         <Card
                             hoverable
                             style={{
@@ -15,15 +15,16 @@ const TeamBowlers = ({ bowlers }) => {
                             }}
                             cover={<img alt={bowler.playerName} src={bowler.photo} />}
                         >
-                            <Meta title={bowler.playerName} description={bowler.specialization} />
+                            <Meta style={{ textAlign: "center" }} title={bowler.playerName} description={bowler.specialization} />
                         </Card>
 
                     </Col>
 
                 ))}
             </Row>
-        </div>
+        </>
     );
 };
 
 export default TeamBowlers;
+

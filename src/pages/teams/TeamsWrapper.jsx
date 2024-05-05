@@ -1,7 +1,8 @@
-import { useState } from "react"
-import TeamListPage from "./teams list/TeamListPage"
+
 import TeamDetailPage from "./team detail/TeamDetailPage"
 import MultiStepRouter from "./teams list/MultiStepRouter"
+import { useEffect, useState } from "react"
+import { getTeams } from "../../services/teams/teams"
 
 const UI = {
     TeamListPage: 'TeamListPage',
@@ -12,16 +13,22 @@ const UI = {
 const TeamsWrapper = () => {
     const [ui, SetUI] = useState(UI.TeamListPage)
     const [selectedTeam, setSelectedTeam] = useState(null)
-    console.log("set", selectedTeam)
+    const [updatedCount, setUpdatedCount] = useState(0);
+    // console.log("set", selectedTeam)
+    const [teams, setTeams] = useState(null)
+    useEffect(() => {
+        getTeams().then((teams) => setTeams(teams))
+    }, [updatedCount])
+
     return (
         <>
             {ui === UI.TeamListPage && <MultiStepRouter next={() => {
                 SetUI(UI.TeamDetailPage)
-                //console.log('reached')
-            }} setSelectedTeam = {setSelectedTeam}
-             />}
-            {ui === UI.TeamDetailPage && <TeamDetailPage back={() => SetUI(UI.TeamListPage)} selectedTeam = {selectedTeam} />}
-            {/* <h1>1{selectedTeam}</h1> */}
+
+            }} setSelectedTeam={setSelectedTeam} teams={teams} setUpdatedCount={setUpdatedCount} updatedCount={updatedCount}
+            />}
+            {ui === UI.TeamDetailPage && <TeamDetailPage back={() => SetUI(UI.TeamListPage)} selectedTeam={selectedTeam} teams={teams} setSelectedTeam={setSelectedTeam} />}
+
         </>
     )
 

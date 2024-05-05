@@ -19,7 +19,7 @@ const MatchesList = ({ searchObj }) => {
   }
 
   function filterMatches(matches, searchObj) {
-    console.log("search Obj", searchObj);
+    // console.log("search Obj", searchObj);
     if (searchObj.date) {
       let formatedDates = formatDates(searchObj.date);
       searchObj.date = formatedDates;

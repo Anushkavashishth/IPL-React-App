@@ -1,27 +1,35 @@
 import TeamList from "./TeamList"
-import bg from "../../../../src/image/image.png"
-import { useEffect, useState } from "react"
-import { getTeams } from "../../../services/teams/teams"
+import bg from "../../../image/teams-card-bg.svg"
+import bgg from "../../../image/teams-tata-logo-bg.svg"
 
-const TeamListPage = ({next,setSelectedTeam,updatedCount, initFormData, showModal, payload}) =>{
-    const [teams, setTeams]=useState(null)
-    useEffect(()=>{
-        getTeams().then((teams)=>setTeams(teams))
-    }, [])
+const TeamListPage = ({ next, setSelectedTeam, updatedCount, initFormData, showModal, payload, onDelete, teams }) => {
 
-    return(
+    return (
         <>
-        
-        {teams && <div style={{backgroundImage: `url(${bg})`}}>
-            <TeamList teams = {teams} next={next} setSelectedTeam={setSelectedTeam}   payload={payload}
+            {teams && <div style={{ backgroundImage: `url(${bg})`, backgroundColor: '#071026', backgroundRepeat: 'repeat-y', backgroundPosition: 'bottom' }}>
+                <div style={{
+                    backgroundImage: `url(${bgg})`, position: 'absolute',
+                    top: '-60',
+                    right: '50%',
+                    margin: '0 auto',
+                    width: '1175px',
+                    height: '404px',
+                    backgroundSize: '100%',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'bottom',
+                    margin: '0 -580px',
+                    // border: '1px solid red'
+                }}></div>
+                <TeamList teams={teams} next={next} setSelectedTeam={setSelectedTeam} payload={payload}
                     initFormData={initFormData}
                     updatedCount={updatedCount}
-                    showModal={showModal}/> 
-        </div>
-        }
-        
+                    showModal={showModal}
+                    onDelete={onDelete} />
+
+            </div>
+            }
         </>
     );
-    
+
 }
 export default TeamListPage;

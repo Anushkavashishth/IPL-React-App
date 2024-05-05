@@ -1,393 +1,205 @@
-// import * as React from "react";
-// import { Form as AntdForm, Button } from "antd";
-// import { Form, InputField } from "rjv-react-antd";
+import React, { useState } from 'react'
+import { Modal, Input, Form, Button, Space, Select } from "antd";
+import { addTeam } from '../../../services/teams/teams';
+import { updateTeam } from '../../../services/teams/teams';
+import { MinusCircleOutlined, PlusOutlined } from '@ant-design/icons';
 
-// type Props = {
-//   data: any;
-//   onSuccess: (data: any) => void;
-// };
-
-// const Step1Form=()=> ({ data, onSuccess }) {
-//   return (
-//     <Form
-//       onSuccess={onSuccess}
-//       data={data}
-//       autoComplete="off"
-//       layout="horizontal"
-//     >
-//       <InputField
-//         path="first"
-//         schema={{ default: "", presence: true }}
-//         label="First Name"
-//       />
-//       <InputField
-//         path="last"
-//         schema={{ default: "", presence: true }}
-//         label="Last Name"
-//       />
-
-//       <AntdForm.Item>
-//         <Button type="primary" htmlType="submit">
-//           Next
-//         </Button>
-//       </AntdForm.Item>
-//     </Form>
-//   );
-// }
-// export default Step1Form
-
-// import { Form, Input, Button } from "antd";
-// const StepForm1 = ({ form, back, next, payload }) => {
-//   function showNextForm(values) {
-//     payload.current.data = { ...payload.current.data, ...values };
-//     // console.log("payload", payload);
-//     next();
-//   }
-//   return (
-//     <>
-//       <h1>Step Form 1</h1>
-//       <Form name="basic"
-//         labelCol={{span: 8,}}
-//         wrapperCol={{span: 16,}}
-//         style={{ maxWidth: 600, }}
-//         onFinish={showNextForm} form={form} autoComplete="off">
-//         <Form.Item
-//           label="Event Name"  name="eventName" 
-//             rules={[
-//             {
-//               required: true, message: "Please input event name!",
-//             },
-//           ]}
-//         >
-//           <Input />
-//         </Form.Item>
-//         <Form.Item  label="Event Duration" name="Duration"
-//           rules={[
-//             {
-//               required: true, message: "Please input your password!",
-//             },
-//           ]}
-//         >
-//           <Input />
-//         </Form.Item>
-
-//         <Form.Item>
-//           <Button type="primary" onClick={back}>
-//             Cancel
-//           </Button>
-//           <Button type="primary" htmlType="submit">
-//             Next
-//           </Button>
-//         </Form.Item>
-//       </Form>
-//     </>
-//   );
-// };
-// export default StepForm1;
-import {
-  AutoComplete,
-  Button,
-  Checkbox,
-  Col,
-  Form,
-  Input,
-  InputNumber,
-  Row,
-  Select,
-  DatePicker,
-  Upload,
-} from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
-import { addTeam, addteam, updateTeam, updateteam } from "../../../services/teams/teams"
-import React, { useState } from 'react';
-import { Modal } from 'antd';
-
-const normFile = (e) => {
-  if (Array.isArray(e)) {
-    return e;
-  }
-  return e?.fileList;
-};
-const formItemLayout = {
-  labelCol: {
-    xs: {
-      span: 24,
-    },
-    sm: {
-      span: 8,
-    },
-  },
-  wrapperCol: {
-    xs: {
-      span: 24,
-    },
-    sm: {
-      span: 16,
-    },
-  },
-};
-const tailFormItemLayout = {
-  wrapperCol: {
-    xs: {
-      span: 24,
-      offset: 0,
-    },
-    sm: {
-      span: 16,
-      offset: 8,
-    },
-  },
-};
 
 const { Option } = Select;
-const StepForm1 = ({payload, form, teamUpdated, handleCancel}) => {
-  const submitForm = (values)=>{
-    payload.current.data = {...payload.current.data, ...values}
-    if(payload.current.operation === 'ADD'){
-      payload.current.data.playerId = Math.random()
-      console.log(payload.current)
-      addTeam(payload.current.data).then(()=>teamUpdated())
+const UI = {
+  Form1: "Form1",
+  Form2: "Form2",
+}
+
+const StepForm1 = ({ isModalOpen, handleCancel, handleOk, form, payload, setUpdatedCount }) => {
+
+  const [currentUi, setCurrentUi] = useState(UI.Form1);
+
+  const form1 = (values) => {
+    payload.current.data = { ...payload.current.data, ...values }
+    // console.log(payload.current.data)
+    // setCurrentUi(UI.Form2);
+  }
+  const submitForm = (values) => {
+    payload.current.data = { ...payload.current.data, ...values }
+    if (payload.current.operation === 'ADD') {
+      payload.current.data.team_id = Math.random()
+      addTeam(payload.current.data).then(() => {
+        setUpdatedCount(count => count + 1)
+        handleOk();
+      })
     }
     else {
-      updateTeam(payload.current.data, 'playerId').then(()=>teamUpdated())
+      updateTeam(payload.current.data, 'team_id').then(() => {
+        setUpdatedCount(count => count + 1)
+        handleOk();
+      })
     }
   }
 
-  const { YearPicker } = DatePicker;
-  
-  
   return (
     <>
       <Modal
-        title="Title"
-        open={true}
-       // onOk={handleOk}
-        //confirmLoading={confirmLoading}
+        title="Personal Detail"
+        open={isModalOpen}
+        onOk={handleOk}
         onCancel={handleCancel}
+        footer={null}
+        width={1000}
       >
-        <Form
-          {...formItemLayout}
-          form={form}
-          name="register"
-          onFinish={submitForm}
-          style={{
-            maxWidth: 600,
-          }}
-          scrollToFirstError
-        >
-          <Form.Item
-            name="name"
-            label="Player Name"
-            rules={[
-              {
-                required: true,
-                message: 'Please input your Name!',
-              },
-            ]}
+        {currentUi === UI.Form1 && (
+          <Form
+            name="basic"
+            labelCol={{ span: 8 }}
+            wrapperCol={{ span: 16 }}
+            style={{ maxWidth: 600, marginLeft: 120 }}
+            initialValues={{ remember: true }}
+            onFinish={form1}
+            form={form}
           >
-            <Input />
+            <Form.Item
+              label="Team Name"
+              name="team_name"
+              rules={[{ required: true, message: "Please input your Name!" }]}
+            >
+              <Input />
+            </Form.Item>
 
-          </Form.Item>
+            <Form.Item
+              label="Owner Name"
+              name="owner_name"
+              rules={[{ required: true, message: "Please input your Name!" }]}
+            >
+              <Input />
+            </Form.Item>
 
-          <Form.Item label="Date Of Birth">
-            <DatePicker />
-          </Form.Item>
+            <Form.Item
+              label="Coach Name"
+              name="coach_name"
+              rules={[{ required: true, message: "Please input your Name!" }]}
+            >
+              <Input />
+            </Form.Item>
 
-          <Form.Item
-            name="specialization"
-            label="Specialization"
-            rules={[
-              {
-                required: true,
-                message: 'Please select Specialization!',
-              },
-            ]}
+            <Form.Item
+              label="Captain Name"
+              name="captain_name"
+              rules={[{ required: true, message: "Please input your Name!" }]}
+            >
+              <Input />
+            </Form.Item>
+
+            <Form.Item label="Team Logo" name='team_logo'
+              rules={[
+                {
+                  required: true,
+                  message: 'Please upload team logo'
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+
+
+            <Form.Item >
+              <Button type="primary" htmlType="submit" style={{ marginLeft: '600px' }} onClick={() => setCurrentUi(UI.Form2)}>
+                Next
+              </Button>
+            </Form.Item>
+          </Form>
+        )}
+        {currentUi === UI.Form2 && (
+          <Form
+            name="dynamic_form_nest_item"
+            autoComplete="off"
+            labelCol={{ span: 12 }}
+            wrapperCol={{ span: 24 }}
+            style={{ width: 950, justifyItems: 'space-between' }}
+            initialValues={{ remember: true }}
+            onFinish={submitForm}
+            form={form}
           >
-            <Select placeholder="select your Specialization">
-              <Option value="Bowler">Bowler</Option>
-              <Option value="Batter">Batter</Option>
-              <Option value="All-Rounder">All-Rounder</Option>
-            </Select>
-          </Form.Item>
+            <Form.List name="players">
+              {(fields, { add, remove }) => (
+                <>
+                  {fields.map(({ key, name, ...restField }) => (
+                    <Space
+                      key={key}
+                      style={{
+                        display: 'flex',
+                        marginBottom: 8,
+                      }}
+                      align="baseline"
+                    >
+                      <Form.Item
+                        {...restField}
+                        name={[name, 'playerName']}
+                        label='Player Name'
+                        rules={[
+                          {
+                            required: true,
+                            message: 'Please input your Name!',
+                          },
+                        ]}
+                      >
+                        <Input />
 
-          <Form.Item label="Debut Year">
-            <YearPicker picker='year' />
-          </Form.Item>
+                      </Form.Item>
 
-          <Form.Item
-            name="Innings"
-            label="Innings"
-            rules={[
-              {
-                required: true,
-                message: 'Please input player innings!',
-              },
-            ]}
-          >
-            <InputNumber
-
-              style={{
-                width: '50%',
-              }}
-            />
-          </Form.Item>
-
-          <Form.Item
-            name="Runs"
-            label="Runs"
-            rules={[
-              {
-                required: true,
-                message: 'Please input player Runs!',
-              },
-            ]}
-          >
-            <InputNumber
-
-              style={{
-                width: '50%',
-              }}
-            />
-          </Form.Item>
-
-          <Form.Item
-            name="Batting Strike Rate"
-            label="Batting Strike Rate"
-            rules={[
-              {
-                required: true,
-                message: 'Please input player Batting Strike Rate!',
-              },
-            ]}
-          >
-            <InputNumber
-
-              style={{
-                width: '50%',
-              }}
-            />
-          </Form.Item>
-
-          <Form.Item
-            name="Bowling Strike Rate"
-            label="Bowling Strike Rate"
-            rules={[
-              {
-                required: true,
-                message: 'Please input player Bowling Strike Rate!',
-              },
-            ]}
-          >
-            <InputNumber
-
-              style={{
-                width: '50%',
-              }}
-            />
-          </Form.Item>
-
-          <Form.Item
-            name="Batting Average"
-            label="Batting Average"
-            rules={[
-              {
-                required: true,
-                message: 'Please input player Batting Average!',
-              },
-            ]}
-          >
-            <InputNumber
-
-              style={{
-                width: '50%',
-              }}
-            />
-          </Form.Item>
-
-          <Form.Item
-            name="Bowling Average"
-            label="Bowling Average"
-            rules={[
-              {
-                required: true,
-                message: 'Please input player Bowling Averagee!',
-              },
-            ]}
-          >
-            <InputNumber
-
-              style={{
-                width: '50%',
-              }}
-            />
-          </Form.Item>
-
-          <Form.Item
-            name="Economy"
-            label="Economy"
-            rules={[
-              {
-                required: true,
-                message: 'Please input player Economy!',
-              },
-            ]}
-          >
-            <InputNumber
-
-              style={{
-                width: '50%',
-              }}
-            />
-          </Form.Item>
-
-          <Form.Item
-            name="Wickets"
-            label="Wickets"
-            rules={[
-              {
-                required: true,
-                message: 'Please input player Wickets!',
-              },
-            ]}
-          >
-            <InputNumber
-
-              style={{
-                width: '50%',
-              }}
-            />
-          </Form.Item>
+                      <Form.Item
+                        {...restField}
+                        name={[name, 'specialization']}
+                        label='Specialization'
+                        rules={[
+                          {
+                            required: true,
+                            message: 'Please select Specialization!',
+                          },
+                        ]}
+                      >
+                        <Select placeholder="select your Specialization">
+                          <Option value="Bowler">Bowler</Option>
+                          <Option value="Batsman">Batter</Option>
+                          <Option value="all-rounder">All-Rounder</Option>
+                        </Select>
+                      </Form.Item>
 
 
-          <Form.Item label="Player Photo" valuePropName="fileList" getValueFromEvent={normFile}>
-            <Upload action="/upload.do" listType="picture-card">
-              <button
-                style={{
-                  border: 0,
-                  background: 'none',
-                }}
-                type="button"
-              >
-                <PlusOutlined />
-                <div
-                  style={{
-                    marginTop: 8,
-                  }}
-                >
-                  Upload
-                </div>
-              </button>
-            </Upload>
-          </Form.Item>
-
-          <Form.Item {...tailFormItemLayout}>
-            <Button type="primary" htmlType="submit">
-              Submit
-            </Button>
-          </Form.Item>
-        </Form>
+                      <Form.Item
+                        {...restField}
+                        label="Player Photo"
+                        name={[name, 'photo']}
+                        rules={[
+                          {
+                            required: true,
+                            message: 'Please upload player photo'
+                          },
+                        ]}
+                      >
+                        <Input />
+                      </Form.Item>
+                      <MinusCircleOutlined onClick={() => remove(name)} />
+                    </Space>
+                  ))}
+                  <Form.Item>
+                    <Button type="dashed" onClick={() => add()} block icon={<PlusOutlined />}>
+                      Add Players
+                    </Button>
+                  </Form.Item>
+                </>
+              )}
+            </Form.List>
+            <Form.Item>
+              <Button type="primary" onClick={() => setCurrentUi(UI.Form1)}>
+                Back
+              </Button>
+              <Button type="primary" style={{ marginLeft: 800 }} htmlType="submit">
+                Submit
+              </Button>
+            </Form.Item>
+          </Form>
+        )}
       </Modal>
-
     </>
   )
 }
